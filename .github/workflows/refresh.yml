@@ -1,0 +1,60 @@
+name: Refresh profile
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-profile
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # No recursion risk: the only triggers above are `schedule` and
+    # `workflow_dispatch`. This workflow intentionally has no `push`
+    # trigger, so the commit this job makes cannot start another run of
+    # itself. The commit message also carries "[skip ci]" as a second,
+    # independent safety net in case a push trigger is ever added later.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate portrait
+        run: python scripts/generate_portrait.py
+
+      - name: Generate stats
+        env:
+          GITHUB_LOGIN: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/generate_stats.py
+          python scripts/generate_streak.py
+          python scripts/generate_languages.py
+          python scripts/generate_year.py
+
+      - name: Commit changes if anything actually changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- generated; then
+            echo "No changes in generated/ -- nothing to commit."
+            exit 0
+          fi
+          git add generated
+          git commit -m "chore: refresh generated profile graphics [skip ci]"
+          git push
