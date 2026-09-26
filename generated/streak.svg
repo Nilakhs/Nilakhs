@@ -4,7 +4,7 @@
 <text x="70.0" y="62" font-size="26" font-weight="600" fill="#58a6ff" text-anchor="middle">57</text>
 <text x="70.0" y="92" font-size="12" fill="#8a8a8a" text-anchor="middle">Total (365d)</text>
 <line x1="140.0" y1="20" x2="140.0" y2="120" stroke="#8a8a8a" stroke-opacity="0.25"/>
-<text x="210.0" y="62" font-size="26" font-weight="600" fill="#58a6ff" text-anchor="middle">1 day</text>
+<text x="210.0" y="62" font-size="26" font-weight="600" fill="#58a6ff" text-anchor="middle">0 days</text>
 <text x="210.0" y="92" font-size="12" fill="#8a8a8a" text-anchor="middle">Current streak</text>
 <line x1="280.0" y1="20" x2="280.0" y2="120" stroke="#8a8a8a" stroke-opacity="0.25"/>
 <text x="350.0" y="62" font-size="26" font-weight="600" fill="#58a6ff" text-anchor="middle">3 days</text>
