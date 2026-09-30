@@ -52,7 +52,7 @@
 <rect x="657.17" y="71.38" width="11.21" height="64.62" fill="#58a6ff" fill-opacity="0.70" rx="1"/>
 <rect x="670.38" y="108.31" width="11.21" height="27.69" fill="#58a6ff" fill-opacity="0.50" rx="1"/>
 <rect x="683.58" y="16.00" width="11.21" height="120.00" fill="#58a6ff" fill-opacity="1.00" rx="1"/>
-<rect x="696.79" y="62.15" width="11.21" height="73.85" fill="#58a6ff" fill-opacity="0.75" rx="1"/>
+<rect x="696.79" y="34.46" width="11.21" height="101.54" fill="#58a6ff" fill-opacity="0.90" rx="1"/>
 <text x="10" y="154" font-size="11" fill="#8a8a8a">52 weeks ago</text>
 <text x="710" y="154" font-size="11" fill="#8a8a8a" text-anchor="end">today</text>
 </svg>
